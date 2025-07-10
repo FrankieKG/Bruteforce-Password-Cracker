@@ -33,7 +33,7 @@ namespace PasswordCracking
         
         // Performance and Progress Configuration
         public const double PERFORMANCE_UPDATE_INTERVAL_SECONDS = 0.5; // Update every 500ms
-        public const int PROGRESS_UPDATE_INTERVAL_MS = 50; // GUI progress polling interval
+        public const int PROGRESS_UPDATE_INTERVAL_MS = 50; // GUI progress task polling interval
         public const int CONSOLE_PROGRESS_UPDATE_INTERVAL_MS = 100; // Console progress update
         public const int DYNAMIC_ALGORITHM_UPDATE_INTERVAL_MS = 200; // Dynamic load balancing
         
