@@ -409,7 +409,7 @@ namespace PasswordCracking
     /// GUI-optimized multi-GPU password cracking with real-time progress updates and algorithm selection.
     /// 
     /// <para><strong>GUI Integration:</strong></para>
-    /// <para>Provides high-frequency progress callbacks optimized for UI responsiveness (50ms intervals).
+    /// <para>Provides high-frequency progress callbacks optimized for UI responsiveness (500ms intervals).
     /// Progress includes completion percentage, speed metrics, and algorithm-specific status messages.</para>
     /// 
     /// <para><strong>Algorithm Selection:</strong></para>
@@ -942,7 +942,7 @@ namespace PasswordCracking
       for (int i = 0; i < snapshot.GpuMetrics.Count; i++)
       {
         var gpuData = snapshot.GpuMetrics[i];
-        string gpuBar = PerformanceTracker.CreateProgressBar(gpuData.Progress, barWidth - 10); // Smaller bars for individual GPUs
+        string gpuBar = PerformanceTracker.CreateProgressBar(gpuData.Progress, KernelConstants.PROGRESS_BAR_WIDTH_SMALL);
         
         Console.WriteLine($"GPU {i + 1}: {gpuBar} {gpuData.Progress:F1}% | {PerformanceTracker.FormatSpeed(gpuData.Speed)} | {gpuData.PerformanceRatio * 100:F0}%");
       }
@@ -1549,7 +1549,7 @@ namespace PasswordCracking
             // Process this GPU's work range with performance tracking
             ulong processedCombinations = 0;
             DateTime lastPerformanceUpdate = DateTime.Now;
-            double updateInterval = config.IsGuiMode ? 0.5 : KernelConstants.PERFORMANCE_UPDATE_INTERVAL_SECONDS;
+            double updateInterval = KernelConstants.PERFORMANCE_UPDATE_INTERVAL_SECONDS;
 
             while (processedCombinations < workRemaining)
             {
